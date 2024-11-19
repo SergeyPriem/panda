@@ -1,5 +1,4 @@
 import streamlit as st
-
 from net_calc import calculate
 
 st.header("CALCULATIONS WITH PANDAPOWER")

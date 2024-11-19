@@ -157,6 +157,7 @@ def calculate():
 
     return buses_df, lines_df
 
+
     # print(c_net.res_bus_sc)
 
     # pp.plotting.simple_plot(c_net, respect_switches=True, line_width=2.0, bus_size=2.0, ext_grid_size=3.0, trafo_size=3.0,
