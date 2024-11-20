@@ -12,8 +12,10 @@ with st.sidebar:
 
 if selection is None:
     st.header("Select the option")
+    st.write("and Good Luck!")
 else:
     st.header(selection)
+    
 
 if selection == "Calculations":
 
