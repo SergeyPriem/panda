@@ -1,9 +1,40 @@
 import streamlit as st
+
+from iec import ptotection_rule
 from net_calc import calculate
 
-st.header("CALCULATIONS WITH PANDAPOWER")
 
-results = calculate()
+options = ["Calculations", "Codes", "South", "West"]
+selection = st.segmented_control(
+    "Directions", options, selection_mode="single"
+)
+st.markdown(f"Your selected options: {selection}.")
 
-st.write(results[0])
-st.write(results[1])
+st.header(selection)
+
+if selection == "Calculations":
+
+    st.subheader("Initial Data")
+    st.subheader("GRID")
+    st.subheader("Buses")
+    st.subheader("Lines")
+    st.subheader("Transformers")
+    st.divider()
+
+    st.subheader("Results")
+    results = calculate()
+    st.subheader("Voltages")
+
+    st.write(results[0])
+    st.subheader("Currents")
+    st.write(results[1])
+    st.subheader("Lines")
+    st.write(results[2].line)
+
+    if st.button('Show Net Dictionary'):
+        st.write(results[2])
+
+
+if selection == "Codes":
+    ptotection_rule()
+

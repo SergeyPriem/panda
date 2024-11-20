@@ -1,35 +1,42 @@
 import pandapower as pp
 import pandas as pd
+import streamlit as st
 
 
 def create_network(net):
-    hb1 = pp.create_bus(net, vn_kv=35., name="ZRU-2.2-1s")
-    lb1 = pp.create_bus(net, vn_kv=0.4, name="Выводы 0,4 кВ Трансформатора")
+    hb1 = pp.create_bus(net, vn_kv=35., name="ZRU-2.2-1s", zone="ТРЦ")
+    lb1 = pp.create_bus(net, vn_kv=0.4, name="Выводы 0,4 кВ Трансформатора", zone="ТРЦ")
     pp.create_transformer(net, hv_bus=hb1, lv_bus=lb1, name="T1", in_service=True, max_loading_percent=120,
-                          vk_percent_characteristic=6,
-                          std_type="2.5 MVA 35/0.4 kV"
+                          vk_percent_characteristic=6, std_type="2.5 MVA 35/0.4 kV",
                           )
 
-    lb2 = pp.create_bus(net, vn_kv=0.4, name="в конце шинопровода")
-    lb3 = pp.create_bus(net, vn_kv=0.4, name="AKFA")
-    lb4 = pp.create_bus(net, vn_kv=0.4, name="стройка")
+    # lb2 = pp.create_bus(net, vn_kv=0.4, name="в конце шинопровода")
+    lb3 = pp.create_bus(net, vn_kv=0.4, name="ВРУ AKFA", zone="AKFA")
+    lb4 = pp.create_bus(net, vn_kv=0.4, name="ВРУ стройплощадки", zone="New Site")
 
-    pp.create_line(net, from_bus=lb1, to_bus=lb2, length_km=0.27, std_type="BUSDUCT 3100A", name="BUSDUCT")
-    pp.create_line(net, from_bus=lb2, to_bus=lb3, length_km=0.13, std_type="ВВГНГ-4x240-1", parallel=5,
+    # pp.create_line(net, from_bus=lb1, to_bus=lb2, length_km=0.27, std_type="ВВГНГ-4x240-1", parallel=6, name="BUSDUCT")
+    pp.create_line(net, from_bus=lb1, to_bus=lb3, length_km=0.31, std_type="ВВГНГ-4x240-1", parallel=5,
                    name="CABLE_AKFA")
-    pp.create_line(net, from_bus=lb2, to_bus=lb4, length_km=0.27, std_type="ВВГНГ-4x240-1", name="CABLE_SITE")
+    pp.create_line(net, from_bus=lb1, to_bus=lb4, length_km=0.27, std_type="ВВГНГ-4x240-1", parallel=1,
+                   name="CABLE_SITE")
 
     pp.create_load(net, bus=lb3, p_mw=1.56, q_mvar=.310)
     pp.create_load(net, bus=lb4, p_mw=0.3, q_mvar=.158)
 
-    pp.create_ext_grid(net, bus=hb1, vm_pu=1.1, s_sc_max_mva=497.3, s_sc_min_mva=116.6, rx_max=0.2)
+    pp.create_ext_grid(net, bus=hb1, vm_pu=1.05, s_sc_max_mva=497.3, s_sc_min_mva=116.6, rx_max=0.2)
 
-    pp.runpp(net)
+    try:
+        pp.runpp(net)
+    except Exception as e:
+        print(f"Error during power flow calculation: {e}")
 
-    pp.shortcircuit.calc_sc(net, bus=None, fault='3ph', case='max', lv_tol_percent=10, topology='auto',
-                            ip=False, ith=False, tk_s=1.0, kappa_method='C', r_fault_ohm=0.0, x_fault_ohm=0.0,
-                            branch_results=False, check_connectivity=True, return_all_currents=False,
-                            inverse_y=True, use_pre_fault_voltage=False)
+    try:
+        pp.shortcircuit.calc_sc(net, bus=None, fault='3ph', case='max', lv_tol_percent=10, topology='auto',
+                                ip=False, ith=False, tk_s=1.0, kappa_method='C', r_fault_ohm=0.0, x_fault_ohm=0.0,
+                                branch_results=False, check_connectivity=True, return_all_currents=False,
+                                inverse_y=True, use_pre_fault_voltage=False)
+    except Exception as e:
+        print(f"Error during short-circuit calculation: {e}")
 
     return net
 
@@ -53,11 +60,15 @@ def create_lines(net):
 
     VVGNG_4_240_1 = {
         'c_nf_per_km': 300,
-        'r_ohm_per_km': 0.15,
-        'x_ohm_per_km': 0.08,
+        # 'r_ohm_per_km': 0.077,
+        # 'x_ohm_per_km': 0.0587,
+        'r_ohm_per_km': 0.094,
+        'x_ohm_per_km': 0.055,
         'max_i_ka': 26.8,
         'name': "ВВГНГ-4x240-1"
     }
+
+    # st.write(pd.DataFrame.from_dict([VVGNG_4_240_1]))
 
     for data in [APVPU_1_150_35, BUSDUCT_3100_04, VVGNG_4_240_1]:
         pp.create_std_type(net, data, data['name'], element='line', overwrite=True, check_required=True)
@@ -146,7 +157,7 @@ def calculate():
     c_net = create_network(net)
 
     voltages_df = c_net.bus
-    voltages_df["Voltage_%"] = c_net.res_bus.vm_pu.round(3)
+    voltages_df["Voltage_%"] = c_net.res_bus.vm_pu.round(4) * 100
     sc_df = c_net.res_bus_sc
     buses_df = pd.merge(voltages_df, sc_df['ikss_ka'].round(3), left_index=True, right_index=True, how="left")
     buses_df.drop(columns=['zone', 'in_service'], inplace=True)
@@ -155,8 +166,7 @@ def calculate():
     lines_df["Line name"] = c_net.line.name
     lines_df["Current, A"] = round(c_net.res_line.i_ka * 1000, 2)
 
-    return buses_df, lines_df
-
+    return buses_df, lines_df, net
 
     # print(c_net.res_bus_sc)
 
