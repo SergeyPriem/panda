@@ -3,14 +3,17 @@ import streamlit as st
 from iec import ptotection_rule
 from net_calc import calculate
 
+with st.sidebar:
+    options = ["Calculations", "Codes"]
+    selection = st.segmented_control(
+        "Directions", options, selection_mode="single"
+    )
 
-options = ["Calculations", "Codes", "South", "West"]
-selection = st.segmented_control(
-    "Directions", options, selection_mode="single"
-)
-st.markdown(f"Your selected options: {selection}.")
 
-st.header(selection)
+if selection is None:
+    st.header("Select the option")
+else:
+    st.header(selection)
 
 if selection == "Calculations":
 
