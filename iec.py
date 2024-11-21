@@ -53,6 +53,7 @@ def ptotection_rule_2():
 def ptotection_rule_3():
     st.markdown("<b>IEEE Std 80-2000</b> (Revision of IEEE Std 80-1986)", unsafe_allow_html=True)
     st.markdown("""<b>14.1 Usual requirements</b>
+    
 A good grounding system provides a low resistance to remote earth in order to minimize the GPR. For most
 transmission and other large substations, the ground resistance is usually about 1 Ω or less. In smaller distribution 
 substations, <u>the usually acceptable range is from 1 Ω to 5 Ω, depending on the local conditions.</u>""",
