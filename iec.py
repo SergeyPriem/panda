@@ -1,6 +1,6 @@
 import streamlit as st
 
-def ptotection_rule_1():
+def protection_rule_1():
 
     st.markdown("<b>60364-4-41 © IEC:2005</b>", unsafe_allow_html=True)
     st.text("""411.4.4 The characteristics of the protective devices (see 411.4.5) and the circuit  impedances shall fulfil the following requirement:""")
@@ -42,7 +42,7 @@ source side of the RCD.
 NOTE 2 Where discrimination between RCDs is necessary, see 535.3 of IEC 60364-5-53.</i>""", unsafe_allow_html=True)
 
 
-def ptotection_rule_2():
+def protection_rule_2():
     st.markdown("<b>60364-5-54 © IEC:2011</b>", unsafe_allow_html=True)
 
     st.markdown("""<b>542.1.1</b> The earthing arrangements may be used jointly or separately 
@@ -50,7 +50,22 @@ def ptotection_rule_2():
     <u>The requirements for protective purposes shall always take precedence.</u>""", unsafe_allow_html=True)
 
 
-def ptotection_rule_3():
+def protection_rule_3():
+    st.markdown("""62305-3 © IEC:2006""", unsafe_allow_html=True)
+    st.markdown("""
+    <b>5.4 Earth-termination system</b> 
+    <b>5.4.1 General</b>       
+    When dealing with the dispersion of the lightning current (high frequency behaviour) into the 
+    ground, whilst minimizing any potentially dangerous overvoltages, the shape and dimensions 
+    of the earth-termination system are the important criteria. In general, a low earthing 
+    resistance (if possible lower than 10 Ω when measured at low frequency) is recommended. 
+    From the viewpoint of lightning protection, a single integrated structure earth-termination 
+    system is preferable and is suitable for all purposes (i.e. lightning protection, power systems 
+    and telecommunication systems).
+    """, unsafe_allow_html=True)
+
+
+def protection_rule_4():
     st.markdown("<b>IEEE Std 80-2000</b> (Revision of IEEE Std 80-1986)", unsafe_allow_html=True)
     st.markdown(
         """
@@ -63,14 +78,14 @@ def ptotection_rule_3():
         """, unsafe_allow_html=True)
 
 
-def ptotection_rule_4():
+def protection_rule_5():
     st.markdown(
         """The NEC states that if you use one ground rod that the resistance to ground must be 25 ohms.  
         If it is higher, then you must place a second ground rod.  There is no requirement to retest the resistance.  
         """, unsafe_allow_html=True)
 
 
-def ptotection_rule_5():
+def protection_rule_6():
     st.markdown(
         """
         <b>ANSI/BICSI 002:</b>
@@ -81,7 +96,7 @@ def ptotection_rule_5():
         and 1 Ohm for Class F4 Data Centers
         """, unsafe_allow_html=True)
 
-def ptotection_rule_6():
+def protection_rule_7():
     st.markdown("""
     <b>IEEE 142:</b>
     
@@ -92,4 +107,4 @@ def ptotection_rule_6():
 
     4.1.3 Recommended acceptable values “Resistances in the <u>1 ohm to 5 ohm range are generally found suitable 
     for industrial plant substations and buildings and large commercial installations</u>. 
-        """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)

@@ -1,7 +1,7 @@
 import streamlit as st
 
-from iec import ptotection_rule_1, ptotection_rule_2, ptotection_rule_3, ptotection_rule_4, ptotection_rule_5, \
-    ptotection_rule_6
+from iec import (protection_rule_1, protection_rule_2, protection_rule_3, protection_rule_4,
+                 protection_rule_5, protection_rule_6, protection_rule_7)
 from net_calc import calculate
 
 with st.sidebar:
@@ -42,15 +42,17 @@ if selection == "Calculations":
 
 
 if selection == "Codes":
-    ptotection_rule_1()
+    protection_rule_1()
     st.divider()
-    ptotection_rule_2()
+    protection_rule_2()
     st.divider()
-    ptotection_rule_3()
+    protection_rule_3()
     st.divider()
-    ptotection_rule_4()
+    protection_rule_4()
     st.divider()
-    ptotection_rule_5()
+    protection_rule_5()
     st.divider()
-    ptotection_rule_6()
+    protection_rule_6()
+    st.divider()
+    protection_rule_7()
 
