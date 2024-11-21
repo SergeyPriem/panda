@@ -1,8 +1,8 @@
 import streamlit as st
 
-def ptotection_rule():
+def ptotection_rule_1():
 
-    st.text("60364-4-41 © IEC:2005")
+    st.markdown("<b>60364-4-41 © IEC:2005</b>", unsafe_allow_html=True)
     st.text("""411.4.4 The characteristics of the protective devices (see 411.4.5) and the circuit  impedances shall fulfil the following requirement:""")
     st.latex(r'Z_S * I_a \leq U_o')
     st.text("""where:
@@ -40,3 +40,20 @@ side. The connection of the protective conductor to the PEN conductor shall be m
 source side of the RCD.
 
 NOTE 2 Where discrimination between RCDs is necessary, see 535.3 of IEC 60364-5-53.</i>""", unsafe_allow_html=True)
+
+
+def ptotection_rule_2():
+    st.markdown("<b>60364-5-54 © IEC:2011</b>", unsafe_allow_html=True)
+
+    st.markdown("""<b>542.1.1</b> The earthing arrangements may be used jointly or separately 
+    for protective and functional purposes according to the requirements of the electrical installation. 
+    <u>The requirements for protective purposes shall always take precedence.</u>""", unsafe_allow_html=True)
+
+
+def ptotection_rule_3():
+    st.markdown("<b>IEEE Std 80-2000</b> (Revision of IEEE Std 80-1986)", unsafe_allow_html=True)
+    st.markdown("""<b>14.1 Usual requirements</b>
+A good grounding system provides a low resistance to remote earth in order to minimize the GPR. For most
+transmission and other large substations, the ground resistance is usually about 1 Ω or less. In smaller distribution 
+substations, the usually acceptable range is from 1 Ω to 5 Ω, depending on the local conditions.""",
+                unsafe_allow_html=True)
