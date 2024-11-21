@@ -60,7 +60,7 @@ def protection_rule_3():
     When dealing with the dispersion of the lightning current (high frequency behaviour) into the 
     ground, whilst minimizing any potentially dangerous overvoltages, the shape and dimensions 
     of the earth-termination system are the important criteria. In general, a low earthing 
-    resistance (if possible lower than 10 Ω when measured at low frequency) is recommended. 
+    resistance <u>(if possible lower than 10 Ω when measured at low frequency) is recommended</u>. 
     From the viewpoint of lightning protection, a single integrated structure earth-termination 
     system is preferable and is suitable for all purposes (i.e. lightning protection, power systems 
     and telecommunication systems).
