@@ -72,16 +72,24 @@ def ptotection_rule_4():
 
 def ptotection_rule_5():
     st.markdown(
-        """ANSI/BICSI 002: Data Center Design and Implementation Best Practices Recommends 5 Ohms Maximum, 
-        but recommends 3 Ohms for Class F2 & F3 Data Centers, and 1 Ohm for Class F4 Data Centers
+        """
+        <b>ANSI/BICSI 002:</b>
+        
+        Data Center Design and Implementation Best Practices
+        
+        Recommends 5 Ohms Maximum, but recommends 3 Ohms for Class F2 & F3 Data Centers, 
+        and 1 Ohm for Class F4 Data Centers
         """, unsafe_allow_html=True)
 
 def ptotection_rule_6():
     st.markdown("""
-    IEEE 142: Recommended Practice for Grounding of Industrial and Commercial Power Systems (The Green Book) 
-    3.3.4.6 Power stations and substations “For satisfactory lightning protection, substation grounding network 
-    resistance must not exceed 5 ohm; for large stations lower values are more desirable.”
+    <b>IEEE 142:</b>
+    
+    Recommended Practice for Grounding of Industrial and Commercial Power Systems (The Green Book)
+     
+    <b>3.3.4.6</b> Power stations and substations “For satisfactory lightning protection, <u>substation grounding 
+    network resistance must not exceed 5 ohm; for large stations lower values are more desirable.</u>”
 
-    4.1.3 Recommended acceptable values “Resistances in the 1 ohm to 5 ohm range are generally found suitable 
-    for industrial plant substations and buildings and large commercial installations. 
+    4.1.3 Recommended acceptable values “Resistances in the <u>1 ohm to 5 ohm range are generally found suitable 
+    for industrial plant substations and buildings and large commercial installations</u>. 
         """, unsafe_allow_html=True)
