@@ -1,6 +1,6 @@
 import streamlit as st
 
-from iec import ptotection_rule_1, ptotection_rule_2
+from iec import ptotection_rule_1, ptotection_rule_2, ptotection_rule_3
 from net_calc import calculate
 
 with st.sidebar:
@@ -44,4 +44,6 @@ if selection == "Codes":
     ptotection_rule_1()
     st.divider()
     ptotection_rule_2()
+    st.divider()
+    ptotection_rule_3()
 
