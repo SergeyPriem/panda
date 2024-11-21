@@ -52,9 +52,36 @@ def ptotection_rule_2():
 
 def ptotection_rule_3():
     st.markdown("<b>IEEE Std 80-2000</b> (Revision of IEEE Std 80-1986)", unsafe_allow_html=True)
-    st.markdown("""<b>14.1 Usual requirements</b>
-    
-A good grounding system provides a low resistance to remote earth in order to minimize the GPR. For most
-transmission and other large substations, the ground resistance is <u>usually about 1 Ω or less.</u> In smaller distribution 
-substations, <u>the usually acceptable range is from 1 Ω to 5 Ω, depending on the local conditions.</u>""",
-                unsafe_allow_html=True)
+    st.markdown(
+        """
+        <b>14.1 Usual requirements</b>
+        
+        A good grounding system provides a low resistance to remote earth in order to minimize the GPR. For most
+        transmission and other large substations, the ground resistance is <u>usually about 1 Ω or less.</u> 
+        In smaller distribution substations, <u>the usually acceptable range is from 1 Ω to 5 Ω, 
+        depending on the local conditions.</u>
+        """, unsafe_allow_html=True)
+
+
+def ptotection_rule_4():
+    st.markdown(
+        """The NEC states that if you use one ground rod that the resistance to ground must be 25 ohms.  
+        If it is higher, then you must place a second ground rod.  There is no requirement to retest the resistance.  
+        """, unsafe_allow_html=True)
+
+
+def ptotection_rule_5():
+    st.markdown(
+        """ANSI/BICSI 002: Data Center Design and Implementation Best Practices Recommends 5 Ohms Maximum, 
+        but recommends 3 Ohms for Class F2 & F3 Data Centers, and 1 Ohm for Class F4 Data Centers
+        """, unsafe_allow_html=True)
+
+def ptotection_rule_6():
+    st.markdown("""
+    IEEE 142: Recommended Practice for Grounding of Industrial and Commercial Power Systems (The Green Book) 
+    3.3.4.6 Power stations and substations “For satisfactory lightning protection, substation grounding network 
+    resistance must not exceed 5 ohm; for large stations lower values are more desirable.”
+
+    4.1.3 Recommended acceptable values “Resistances in the 1 ohm to 5 ohm range are generally found suitable 
+    for industrial plant substations and buildings and large commercial installations. 
+        """, unsafe_allow_html=True)
