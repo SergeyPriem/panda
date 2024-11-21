@@ -54,7 +54,9 @@ def protection_rule_3():
     st.markdown("""62305-3 © IEC:2006""", unsafe_allow_html=True)
     st.markdown("""
     <b>5.4 Earth-termination system</b> 
-    <b>5.4.1 General</b>       
+    
+    <b>5.4.1 General</b> 
+    
     When dealing with the dispersion of the lightning current (high frequency behaviour) into the 
     ground, whilst minimizing any potentially dangerous overvoltages, the shape and dimensions 
     of the earth-termination system are the important criteria. In general, a low earthing 
